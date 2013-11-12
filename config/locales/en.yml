@@ -20,4 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  fail: 'Auhtentication FAIL!!'
+  success: 'Authentication SUCCESS!!!'
+  signed_in: 'You are signed in.'
+  welcome: 'Thank you for signing up.'
