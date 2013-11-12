@@ -1,4 +1,7 @@
 Reunitedway::Application.routes.draw do
+
+  devise_for :users
+
   get 'search/index'
   get 'static_page/index'
 
