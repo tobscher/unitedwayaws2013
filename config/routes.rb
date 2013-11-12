@@ -1,5 +1,5 @@
 Reunitedway::Application.routes.draw do
-
+  devise_for :users
 
   get 'search/index'
   get 'static_page/index'
@@ -10,7 +10,8 @@ Reunitedway::Application.routes.draw do
   match '/search', to: 'search#index', via: :get
   match '/signout', to: 'sessions#destroy', via: :delete
 
-  devise_for :users
+  get "search"            => "search#index"
+  get "search/locations"  => "search#locations"
 
   root to: 'static_page#index'
 end
