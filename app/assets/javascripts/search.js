@@ -1,5 +1,6 @@
 var SearchMap = null;
 var SearchMarkers = [];
+var SearchInfoWindow = null;
 
 function initializeSearchMap() {
   var dfltLoc = new google.maps.LatLng(36.114646, -115.172816);
@@ -8,6 +9,7 @@ function initializeSearchMap() {
     zoom:       12,
     mapTypeId:  google.maps.MapTypeId.ROADMAP,
   });
+  SearchInfoWindow = new google.maps.InfoWindow({ content: '' })
 
   // map.setCenter(new google.maps.LatLng(lat, lng));
 
@@ -45,7 +47,15 @@ function setSearchLocation(latLng) {
   .done(function(rs) {
     $(rs).each(function(i, md) {
       var latLng = new google.maps.LatLng(md.lat, md.lng);
-      addSearchMarker(latLng, md.title);
+      addSearchMarker(latLng, md.title, null, function(marker) {
+        html = _.template(
+          "<b><%- md.title %><br/><br/><%- md.desc %>",
+          { md: md }
+        );
+
+        SearchInfoWindow.setContent(html);
+        SearchInfoWindow.open(SearchMap, marker);
+      });
     });
   })
   .error(function(rs) {
@@ -53,7 +63,7 @@ function setSearchLocation(latLng) {
   });
 }
 
-function addSearchMarker(latLng, title, iconUrl) {
+function addSearchMarker(latLng, title, iconUrl, clickCallback) {
   var marker = new google.maps.Marker({
     position:   latLng,
     title:      title,
@@ -65,6 +75,12 @@ function addSearchMarker(latLng, title, iconUrl) {
 
   if (iconUrl) {
     marker.setIcon(iconUrl);
+  }
+
+  if (clickCallback) {
+    google.maps.event.addListener(marker, 'click', function() {
+      clickCallback(marker);
+    });
   }
 }
 
