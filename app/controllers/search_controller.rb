@@ -1,6 +1,9 @@
 class SearchController < ApplicationController
+
   def index
-    
+  end
+
+  def map
   end
 
   def locations
