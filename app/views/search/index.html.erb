@@ -1,1 +1,24 @@
 <h1>Search!</h1>
+
+<div id="search-pane">
+  <div id="search-ctrls" style="margin: 0.5em;">
+    <form id="search-zip-form">
+      <label for="search-zip">Zip Code:</label>
+      <input id="search-zip" type="text" />
+      <input type="submit" name="Search" />
+      <button id="search-near" style="display:none;">Near Me</button>
+    </form>
+  </div>
+  <div id="map-canvas" style="width:500px; height:500px;" />
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    if (navigator.geolocation) { $('#search-near').show(); }
+
+    initializeSearchMap();
+
+    $('#search-zip-form').on('submit', handleSearchForZip);
+    $('#search-near').on('click', handleSearchNearMe);
+  });
+</script>
