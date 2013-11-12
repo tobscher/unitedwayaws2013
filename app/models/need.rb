@@ -18,19 +18,6 @@ class Need
 
   field :loc, :type => Array
 
-  index(
-      [
-          [:loc, Mongo::GEO2D]
-      ], background: true
-
-  )
-  index(
-    [
-      :category
-    ], background: true
-  )
-  index(
-    [ :agency_id ], background: true
-  )
+  index({ location: "2d" }, { min: -200, max: 200 })
 
 end
