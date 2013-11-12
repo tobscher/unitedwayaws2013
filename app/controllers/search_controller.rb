@@ -15,18 +15,20 @@ class SearchController < ApplicationController
       return
     end
 
-    rs = [
-      {
-        title:  'The Wynn Golf Club',
-        lat:    36.124981,
-        lng:    -115.157932,
-      },
-      {
-        title:  'Las Vegas National Golf Club',
-        lat:    36.129556,
-        lng:    -115.125786,
-      },
-    ]
+    # rs = [
+    #   {
+    #     title:  'The Wynn Golf Club',
+    #     lat:    36.124981,
+    #     lng:    -115.157932,
+    #   },
+    #   {
+    #     title:  'Las Vegas National Golf Club',
+    #     lat:    36.129556,
+    #     lng:    -115.125786,
+    #   },
+    # ]
+
+    rs = Need.all.map(&:to_search)
 
     render json: rs
   end
