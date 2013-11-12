@@ -20,7 +20,7 @@ class Need
 
   index(
       [
-          [:loc, Mongo::GEO2D]             
+          [:loc, Mongo::GEO2D]
       ], background: true
 
   )
