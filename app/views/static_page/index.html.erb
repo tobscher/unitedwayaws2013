@@ -9,13 +9,21 @@
         <div class="panel-body">
           <div class='row center-block'>
             <div class='col-md-4'>
-              <p><button type="button" class="btn btn-primary btn-large">Facebook</button></p>
+              <p>
+                <%= form_tag sessions_facebook_path, :method => 'get', :id => 'session_facebook_form' do %>
+                    <%= submit_tag 'Facebook', class: 'btn btn-primary btn-large' %>
+                <% end %>
+               </p>
             </div>
           </div>
           <div class='row'></div>
           <div>
             <div class='col-md-4'>
-              <p><button type="button" class="btn btn-primary btn-large">Twitter</button></p>
+              <p>
+                <%= form_tag sessions_twitter_path, :method => 'get', :id => 'session_twitter_form' do %>
+                    <%= submit_tag 'Twitter', class: 'btn btn-primary btn-large' %>
+                <% end %>
+              </p>
             </div>
           </div>
         </div>
