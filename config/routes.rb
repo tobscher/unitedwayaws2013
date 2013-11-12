@@ -1,6 +1,8 @@
 Reunitedway::Application.routes.draw do
-  get "static_page/index"
-  get "search" => "search#index"
+  get 'search/index'
+  get 'static_page/index'
+
+  match '/search', to: 'search#index', via: :get
 
   root to: 'static_page#index'
 end

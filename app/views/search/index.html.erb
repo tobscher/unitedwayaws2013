@@ -1,1 +1,62 @@
-<h1>Search!</h1>
+<%= provide :title, 'Search' %>
+<h1>Search</h1>
+<p class="lead">
+  Add some content here
+</p>
+
+<div class="row">
+  <div class="col-md-4">
+    <form role="form" class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control" id="search_locale" placeholder="Enter zip code" />
+      </div>
+      <button type="submit" class="btn btn-default">Search</button>
+    </form>
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+  <div class="col-md-8">
+    <!-- Nav tabs -->
+    <ul id='search_tabs' class="nav nav-tabs">
+      <li><a href="#map_view" data-toggle="tab">Map view</a></li>
+      <li><a href="#table_view" data-toggle="tab">Table view</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane" id="map_view">
+        <div class='spacer'></div>
+        Maps view
+      </div>
+      <div class="tab-pane active" id="table_view">
+        <div class='spacer'></div>
+        <div class='row'>
+          <div class='col-md-6'>
+            <table class="table">
+              <tr>
+                <th>Location</th>
+              </tr>
+              <tr>
+                <td>London</td>
+              </tr>
+              <tr>
+                <td>Las Vegas</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+    $('#search_tabs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+    $('#search_tabs a[href="#map_view"]').tab('show')
+</script>
