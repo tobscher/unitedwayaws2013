@@ -1,5 +1,4 @@
 Reunitedway::Application.routes.draw do
-  devise_for :users
 
   get '/auth/:provider/callback' => 'authentications#create'
 
