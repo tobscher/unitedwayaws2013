@@ -46,3 +46,6 @@ end
 
 # Webserver
 gem "thin"
+
+# Authentication
+gem "devise"
