@@ -13,7 +13,7 @@ class AuthenticationsController < ApplicationController
     elsif current_user
       current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       flash[:notice] = t(:success)
-      redirect_to authentications_url
+      redirect_to root_url
     elsif user = create_new_omniauth_user(omniauth)
       user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       flash[:notice] = t(:welcome)
